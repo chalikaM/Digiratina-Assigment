@@ -1,0 +1,32 @@
+<div style="padding: 15px;">
+  <div>
+    <h1>Parcel Registation</h1>
+    <form>
+      <div class="form-group">
+        <label>Sendor Name</label>
+        <input type="text" [(ngModel)]="senderName" [ngModelOptions]="{standalone: true}" class="form-control input-bar"
+          id="name" placeholder="Enter sender's name">
+      </div>
+      <div class="form-group">
+        <label>Reciever Name</label>
+        <input type="text" [(ngModel)]="receiverName" [ngModelOptions]="{standalone: true}"
+          class="form-control input-bar" id="address" placeholder="Enter receiver's name">
+
+      </div>
+      <div class="form-group">
+        <label>Company Id</label>
+        <input type="text" [(ngModel)]="companyId" [ngModelOptions]="{standalone: true}" class="form-control input-bar"
+          id="mobile" placeholder="Enter company Id">
+
+      </div>
+      <div class="form-group">
+        <label>Location Id</label>
+        <input type="text" [(ngModel)]="locationId" [ngModelOptions]="{standalone: true}" class="form-control input-bar"
+          id="mobile" placeholder="Enter Location Id">
+
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-4" (click)="save()">Submit</button>
+    </form>
+  </div>
+</div>

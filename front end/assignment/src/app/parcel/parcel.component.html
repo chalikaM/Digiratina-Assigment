@@ -1,0 +1,38 @@
+<div style="padding: 30px;">
+  <div>
+    <div>
+      <div style="text-align: center;">
+        <h1>Parcels Table</h1>
+      </div>
+      <div style="display: flex; justify-content: flex-end; padding-bottom: 10px;">
+        <button (click)="navigateCreateNewParcelsScreen()" class="btn btn-primary">New Parcel</button>
+      </div>
+      <div class="scroll">
+        <table class="table">
+          <thead>
+            <h1 *ngIf="!isResultLoaded">Loading.................</h1>
+
+            <tr class="tableData fixed-row">
+              <th scope="col">ID</th>
+              <th scope="col">Sebder Name</th>
+              <th scope="col">Reciever Name</th>
+              <th scope="col">Compnany ID</th>
+              <th scope="col">Location ID</th>
+              <!-- <th scope="col">Actions</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let parcel of ParcelArray" class="tableRaw">
+              <td>{{parcel.id }}</td>
+              <td>{{parcel.senderName}}</td>
+              <td>{{parcel.receiverName }}</td>
+              <td>{{parcel.companyId }}</td>
+              <td>{{parcel.locationId }}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

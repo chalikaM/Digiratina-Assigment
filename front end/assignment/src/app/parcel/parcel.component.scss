@@ -1,0 +1,22 @@
+  /* Table */
+  .tableData {
+    border: 1px solid black;
+  }
+
+    /* TableRaw */
+    .tableRaw {
+        border: 1px solid black;
+      }
+
+      .scroll {
+        width:100%;
+        height: 400px;
+        overflow: auto;
+      }
+
+      .fixed-row {
+        position: sticky;
+        top: 0;
+        background-color: white;
+        z-index: 1;
+      }
