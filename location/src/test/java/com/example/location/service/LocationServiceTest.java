@@ -27,10 +27,10 @@ class LocationServiceTest {
     private LocationRepository locationRepository;
 
     @Test
-    public void getParcelsTest(){
+    public void testGetLocationWiseParcelCount(){
 
-        Mockito.when(locationRepository.getAllLocations()).thenReturn(Stream.of(new ParcelCountByLocation(1,"Nugegoda"), new ParcelCountByLocation(2,"Homagama")).collect(Collectors.toList()));
-        assertEquals(2, locationService.getAllParcelsByLocation().size());
+        Mockito.when(locationRepository.countParcelsByLocation()).thenReturn(Stream.of(new ParcelCountByLocation(1,"Nugegoda"), new ParcelCountByLocation(2,"Homagama")).collect(Collectors.toList()));
+        assertEquals(2, locationService.getLocationWiseParcelCount().size());
 
     }
 

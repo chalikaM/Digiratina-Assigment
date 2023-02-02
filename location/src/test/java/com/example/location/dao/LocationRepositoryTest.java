@@ -29,13 +29,13 @@ class LocationRepositoryTest {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    void testGetAllCompanies() {
+    void testCountParcelsByLocation() {
         List<ParcelCountByLocation> expectedLocations = Stream.of(new ParcelCountByLocation(1,"Nugegoda"), new ParcelCountByLocation(2,"Homagama")).collect(Collectors.toList());
 
         Mockito.when(jdbcTemplate.query(anyString(), any(RowMapper.class)))
                 .thenReturn(expectedLocations);
 
-        List<ParcelCountByLocation> companies = locationRepository.getAllLocations();
+        List<ParcelCountByLocation> companies = locationRepository.countParcelsByLocation();
 
         assertEquals(expectedLocations, companies);
     }

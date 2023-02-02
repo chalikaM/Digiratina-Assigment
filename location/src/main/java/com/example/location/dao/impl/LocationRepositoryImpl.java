@@ -15,7 +15,7 @@ public class LocationRepositoryImpl implements LocationRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<ParcelCountByLocation> getAllLocations() {
+    public List<ParcelCountByLocation> countParcelsByLocation() {
 
         String selectQuery = "SELECT COUNT(l.id) as parcel_count, l.location_name FROM public.locations l INNER JOIN public.parcels p ON l.id=p.location_id GROUP BY l.id;";
 

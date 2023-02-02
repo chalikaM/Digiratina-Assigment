@@ -34,15 +34,15 @@ class LocationControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void testFindParcels() throws Exception {
+    void testGetParcelCountByLocation() throws Exception {
         List<ParcelCountByLocation> parcelCountByLocations = Arrays.asList(new ParcelCountByLocation(1,"Nugegoda"), new ParcelCountByLocation(2,"Homagama"));
-        Mockito.when(locationService.getAllParcelsByLocation()).thenReturn(parcelCountByLocations);
+        Mockito.when(locationService.getLocationWiseParcelCount()).thenReturn(parcelCountByLocations);
         mockMvc = MockMvcBuilders.standaloneSetup(locationController).build();
 
-        mockMvc.perform(get("/api/locations/get"))
+        mockMvc.perform(get("/api/v1/locations"))
                 .andExpect(status().isOk());
 
-        assertEquals(parcelCountByLocations, locationController.findAllParcelsByLocation());
+        assertEquals(parcelCountByLocations, locationController.getParcelCountByLocation());
     }
 
 }

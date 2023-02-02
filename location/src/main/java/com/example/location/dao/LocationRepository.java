@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface LocationRepository {
 
-    List<ParcelCountByLocation> getAllLocations();
+    List<ParcelCountByLocation> countParcelsByLocation();
 }

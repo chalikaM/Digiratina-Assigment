@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface LocationService {
 
-    List<ParcelCountByLocation> getAllParcelsByLocation();
+    List<ParcelCountByLocation> getLocationWiseParcelCount();
 }

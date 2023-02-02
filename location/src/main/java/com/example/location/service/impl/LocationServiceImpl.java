@@ -17,15 +17,15 @@ public class LocationServiceImpl implements LocationService {
     private static final Logger LOGGER= LoggerFactory.getLogger(LocationServiceImpl.class);
 
     @Autowired
-    LocationRepository locationRepository;
+    LocationRepository repository;
 
     @Override
-    public List<ParcelCountByLocation> getAllParcelsByLocation() {
+    public List<ParcelCountByLocation> getLocationWiseParcelCount() {
 
         long startTime = System.currentTimeMillis();
         LOGGER.info("getAllParcelsByCompaniesRequest");
 
-        List<ParcelCountByLocation> parcelsByLocations = locationRepository.getAllLocations();
+        List<ParcelCountByLocation> parcelsByLocations = repository.countParcelsByLocation();
 
         LOGGER.info("getAllParcelsByCompaniesResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByLocations));
 

@@ -1,6 +1,5 @@
 package com.example.location.controller;
 
-import com.example.location.dao.LocationRepository;
 import com.example.location.entity.ParcelCountByLocation;
 import com.example.location.service.LocationService;
 import com.example.location.util.CommonUtil;
@@ -12,24 +11,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/locations")
+@RequestMapping("/api/v1/locations")
 public class LocationController {
 
     private static final Logger LOGGER= LoggerFactory.getLogger(LocationController.class);
 
     @Autowired
-    LocationRepository locationRepository;
+    LocationService service;
 
-    @Autowired
-    LocationService locationService;
-
-    @GetMapping("/get")
-    public List<ParcelCountByLocation> findAllParcelsByLocation(){
+    @GetMapping()
+    public List<ParcelCountByLocation> getParcelCountByLocation(){
 
         long startTime = System.currentTimeMillis();
         LOGGER.info("findAllParcelsByLocationRequest");
 
-        List<ParcelCountByLocation> parcelsByLocations = locationService.getAllParcelsByLocation();
+        List<ParcelCountByLocation> parcelsByLocations = service.getLocationWiseParcelCount();
 
         LOGGER.info("findAllParcelsByLocationResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByLocations));
 
