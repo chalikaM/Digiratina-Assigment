@@ -25,7 +25,7 @@ class ParcelServiceTest {
     private ParcelRepository repository;
 
     @Test
-    public void getParcelsTest(){
+    public void testGetAllParcels(){
 
         Mockito.when(repository.findAllParcels()).thenReturn(Stream.of(new Parcel(1,"Chalika","Mihiran",1,1), new Parcel(2,"Asiri","Mevan",2,2)).collect(Collectors.toList()));
         assertEquals(2, service.getAllParcels().size());

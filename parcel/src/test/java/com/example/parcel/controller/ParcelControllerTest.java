@@ -36,7 +36,7 @@ class ParcelControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void testFindParcels() throws Exception {
+    void testListAllParcels() throws Exception {
         List<Parcel> parcels = Arrays.asList(new Parcel(1,"Chalika","Mihiran",1,1), new Parcel(2,"Asiri","Mevan",2,2));
         Mockito.when(service.getAllParcels()).thenReturn(parcels);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
@@ -48,7 +48,7 @@ class ParcelControllerTest {
     }
 
     @Test
-    void testFindParcelsByCompany() throws Exception {
+    void testGetParcelCountByCompany() throws Exception {
         List<ParcelByCompany> parcelByCompanies = Arrays.asList(new ParcelByCompany(1,"Digiratina"), new ParcelByCompany(2,"Virtusa"));
         Mockito.when(service.getCompanyWiseParcelCount()).thenReturn(parcelByCompanies);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
@@ -60,7 +60,7 @@ class ParcelControllerTest {
     }
 
     @Test
-    void testFindParcelsByLocation() throws Exception {
+    void testGetParcelCountByLocation() throws Exception {
         List<ParcelByLocation> parcelByLocations = Arrays.asList(new ParcelByLocation(1,"Nugegoda"), new ParcelByLocation(2,"Homagama"));
         Mockito.when(service.getLocationWiseParcelCount()).thenReturn(parcelByLocations);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();

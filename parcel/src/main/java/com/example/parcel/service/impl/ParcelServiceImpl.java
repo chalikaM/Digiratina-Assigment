@@ -42,11 +42,11 @@ public class ParcelServiceImpl implements ParcelService {
     public List<ParcelByCompany> getCompanyWiseParcelCount(){
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("getParcelByCompanyRequest");
+        LOGGER.info("getCompanyWiseParcelCountRequest");
 
         ResponseEntity<ParcelByCompany[]> response = restTemplate.getForEntity(endpointForCompanies, ParcelByCompany[].class);
 
-        LOGGER.info("getParcelByCompanyResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(response));
+        LOGGER.info("getCompanyWiseParcelCountResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(response));
 
 
         return Arrays.asList(response.getBody());
@@ -57,11 +57,11 @@ public class ParcelServiceImpl implements ParcelService {
     public List<ParcelByLocation> getLocationWiseParcelCount() {
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("getParcelByLocationRequest");
+        LOGGER.info("getLocationWiseParcelCountRequest");
 
         ResponseEntity<ParcelByLocation[]> response = restTemplate.getForEntity(endpointForLocations, ParcelByLocation[].class);
 
-        LOGGER.info("getParcelByLocationResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(response));
+        LOGGER.info("getLocationWiseParcelCountResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(response));
 
         return Arrays.asList(response.getBody());
     }
@@ -70,11 +70,11 @@ public class ParcelServiceImpl implements ParcelService {
     public List<Parcel> getAllParcels() {
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("getParcelByLocationRequest");
+        LOGGER.info("getAllParcelsRequest");
 
         List<Parcel> parcels =  parcelRepository.findAllParcels();
 
-        LOGGER.info("getParcelByLocationResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcels));
+        LOGGER.info("getAllParcelsResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcels));
 
         return parcels;
     }

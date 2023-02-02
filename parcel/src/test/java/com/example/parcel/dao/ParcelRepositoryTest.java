@@ -30,7 +30,7 @@ class ParcelRepositoryTest {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    void testGetAllCompanies() {
+    void testFindAllParcels() {
 
         List<Parcel> expectedParcels = Stream.of(new Parcel(1,"Chalika","Mihiran",1,1), new Parcel(2,"Asiri","Mevan",2,2)).collect(Collectors.toList());
         Mockito.when(jdbcTemplate.query(anyString(), any(RowMapper.class)))

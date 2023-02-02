@@ -68,11 +68,11 @@ public class ParcelController {
     public List<Parcel> listAllParcels(){
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("findParcelsRequest");
+        LOGGER.info("listAllParcelsRequest");
 
         List<Parcel> parcels = service.getAllParcels();
 
-        LOGGER.info("findParcelsResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcels));
+        LOGGER.info("listAllParcelsResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcels));
 
         return parcels;
     }
