@@ -1,6 +1,5 @@
 package com.example.company.controller;
 
-import com.example.company.dao.CompanyRepository;
 import com.example.company.entity.ParcelByCompany;
 import com.example.company.service.CompanyService;
 import com.example.company.util.CommonUtil;
@@ -14,24 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/companies")
+@RequestMapping("/api/v1/companies")
 public class CompanyController {
 
     private static final Logger LOGGER= LoggerFactory.getLogger(CompanyController.class);
 
     @Autowired
-    CompanyRepository companyRepository;
+    CompanyService service;
 
-    @Autowired
-    CompanyService companyService;
-
-    @GetMapping("/get")
-    public List<ParcelByCompany> findAllParcelsByCompanies(){
+    @GetMapping()
+    public List<ParcelByCompany> getParcelCountByCompany(){
 
         long startTime = System.currentTimeMillis();
         LOGGER.info("findAllParcelsByCompaniesRequest");
 
-        List<ParcelByCompany> parcelsByCompanies = companyService.getAllParcelsByCompanies();
+        List<ParcelByCompany> parcelsByCompanies = service.getCompanyWiseParcelCount();
 
         LOGGER.info("findAllParcelsByCompaniesResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByCompanies));
 

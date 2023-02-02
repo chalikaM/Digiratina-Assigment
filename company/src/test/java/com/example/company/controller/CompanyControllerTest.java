@@ -26,23 +26,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CompanyControllerTest {
 
     @Mock
-    private CompanyService companyService;
+    private CompanyService service;
 
     @InjectMocks
-    private CompanyController companyController;
+    private CompanyController controller;
 
     private MockMvc mockMvc;
 
     @Test
     void testFindParcels() throws Exception {
         List<ParcelByCompany> parcelByCompanies = Arrays.asList(new ParcelByCompany(1,"Digiratina"), new ParcelByCompany(2,"Virtusa"));
-        Mockito.when(companyService.getAllParcelsByCompanies()).thenReturn(parcelByCompanies);
-        mockMvc = MockMvcBuilders.standaloneSetup(companyController).build();
+        Mockito.when(service.getCompanyWiseParcelCount()).thenReturn(parcelByCompanies);
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
-        mockMvc.perform(get("/api/companies/get"))
+        mockMvc.perform(get("/api/v1/companies"))
                 .andExpect(status().isOk());
 
-        assertEquals(parcelByCompanies, companyController.findAllParcelsByCompanies());
+        assertEquals(parcelByCompanies, controller.getParcelCountByCompany());
     }
 
 }

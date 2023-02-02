@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CompanyService {
 
-    List<ParcelByCompany> getAllParcelsByCompanies();
+    List<ParcelByCompany> getCompanyWiseParcelCount();
 }

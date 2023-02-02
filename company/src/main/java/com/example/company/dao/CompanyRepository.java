@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CompanyRepository {
 
-    List<ParcelByCompany> getAllCompanies();
+    List<ParcelByCompany> countParcelsByLocation();
 }

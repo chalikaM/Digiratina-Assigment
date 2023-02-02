@@ -15,7 +15,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<ParcelByCompany> getAllCompanies() {
+    public List<ParcelByCompany> countParcelsByLocation() {
 
         String selectQuery = "SELECT COUNT(c.id) as parcel_count, c.company_name FROM public.companies c INNER JOIN public.parcels p ON c.id=p.company_id GROUP BY c.id;";
 

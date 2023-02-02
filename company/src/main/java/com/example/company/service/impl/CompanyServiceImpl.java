@@ -18,15 +18,15 @@ public class CompanyServiceImpl implements CompanyService {
     private static final Logger LOGGER= LoggerFactory.getLogger(CompanyServiceImpl.class);
 
     @Autowired
-    CompanyRepository companyRepository;
+    CompanyRepository repository;
 
     @Override
-    public List<ParcelByCompany> getAllParcelsByCompanies() {
+    public List<ParcelByCompany> getCompanyWiseParcelCount() {
 
         long startTime = System.currentTimeMillis();
         LOGGER.info("getAllParcelsByCompaniesRequest");
 
-        List<ParcelByCompany> parcelsByCompanies = companyRepository.getAllCompanies();
+        List<ParcelByCompany> parcelsByCompanies = repository.countParcelsByLocation();
 
         LOGGER.info("getAllParcelsByCompaniesResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByCompanies));
 

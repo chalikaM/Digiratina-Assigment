@@ -20,16 +20,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class CompanyServiceTest {
 
     @Autowired
-    private CompanyService companyService;
+    private CompanyService service;
 
     @MockBean
-    private CompanyRepository companyRepository;
+    private CompanyRepository repository;
 
     @Test
     public void getParcelsTest(){
 
-        Mockito.when(companyRepository.getAllCompanies()).thenReturn(Stream.of(new ParcelByCompany(1,"Digiratina"), new ParcelByCompany(2,"Virtusa")).collect(Collectors.toList()));
-        assertEquals(2, companyService.getAllParcelsByCompanies().size());
+        Mockito.when(repository.countParcelsByLocation()).thenReturn(Stream.of(new ParcelByCompany(1,"Digiratina"), new ParcelByCompany(2,"Virtusa")).collect(Collectors.toList()));
+        assertEquals(2, service.getCompanyWiseParcelCount().size());
 
     }
 

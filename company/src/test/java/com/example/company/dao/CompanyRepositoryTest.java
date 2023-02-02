@@ -23,7 +23,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 class CompanyRepositoryTest {
 
     @InjectMocks
-    private CompanyRepositoryImpl companyRepository;
+    private CompanyRepositoryImpl repository;
 
     @Mock
     private JdbcTemplate jdbcTemplate;
@@ -35,7 +35,7 @@ class CompanyRepositoryTest {
         Mockito.when(jdbcTemplate.query(anyString(), any(RowMapper.class)))
                 .thenReturn(expectedCompanies);
 
-        List<ParcelByCompany> companies = companyRepository.getAllCompanies();
+        List<ParcelByCompany> companies = repository.countParcelsByLocation();
 
         assertEquals(expectedCompanies, companies);
     }
