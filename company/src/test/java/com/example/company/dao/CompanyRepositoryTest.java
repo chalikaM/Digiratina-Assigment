@@ -29,7 +29,7 @@ class CompanyRepositoryTest {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    void testGetAllCompanies() {
+    void testCountParcelsByLocation() {
         List<ParcelByCompany> expectedCompanies = Stream.of(new ParcelByCompany(1,"Digiratina"), new ParcelByCompany(2,"Virtusa")).collect(Collectors.toList());
 
         Mockito.when(jdbcTemplate.query(anyString(), any(RowMapper.class)))
