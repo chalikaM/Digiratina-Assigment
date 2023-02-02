@@ -23,11 +23,11 @@ public class LocationServiceImpl implements LocationService {
     public List<ParcelCountByLocation> getLocationWiseParcelCount() {
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("getAllParcelsByCompaniesRequest");
+        LOGGER.info("getLocationWiseParcelCountRequest");
 
         List<ParcelCountByLocation> parcelsByLocations = repository.countParcelsByLocation();
 
-        LOGGER.info("getAllParcelsByCompaniesResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByLocations));
+        LOGGER.info("getLocationWiseParcelCountResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByLocations));
 
         return parcelsByLocations;
     }

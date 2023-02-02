@@ -23,11 +23,11 @@ public class LocationController {
     public List<ParcelCountByLocation> getParcelCountByLocation(){
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("findAllParcelsByLocationRequest");
+        LOGGER.info("getParcelCountByLocationRequest");
 
         List<ParcelCountByLocation> parcelsByLocations = service.getLocationWiseParcelCount();
 
-        LOGGER.info("findAllParcelsByLocationResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByLocations));
+        LOGGER.info("getParcelCountByLocationResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByLocations));
 
         return parcelsByLocations;
 
