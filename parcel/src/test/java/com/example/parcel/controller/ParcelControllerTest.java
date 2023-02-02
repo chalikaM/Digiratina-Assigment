@@ -28,47 +28,47 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ParcelControllerTest {
 
     @Mock
-    private ParcelService parcelService;
+    private ParcelService service;
 
     @InjectMocks
-    private ParcelController parcelController;
+    private ParcelController controller;
 
     private MockMvc mockMvc;
 
     @Test
     void testFindParcels() throws Exception {
         List<Parcel> parcels = Arrays.asList(new Parcel(1,"Chalika","Mihiran",1,1), new Parcel(2,"Asiri","Mevan",2,2));
-        Mockito.when(parcelService.getAllParcels()).thenReturn(parcels);
-        mockMvc = MockMvcBuilders.standaloneSetup(parcelController).build();
+        Mockito.when(service.getAllParcels()).thenReturn(parcels);
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
-        mockMvc.perform(get("/api/assignment/get/parcels"))
+        mockMvc.perform(get("/api/v1/parcels"))
                 .andExpect(status().isOk());
 
-        assertEquals(parcels, parcelController.findParcels());
+        assertEquals(parcels, controller.listAllParcels());
     }
 
     @Test
     void testFindParcelsByCompany() throws Exception {
         List<ParcelByCompany> parcelByCompanies = Arrays.asList(new ParcelByCompany(1,"Digiratina"), new ParcelByCompany(2,"Virtusa"));
-        Mockito.when(parcelService.getParcelByCompany()).thenReturn(parcelByCompanies);
-        mockMvc = MockMvcBuilders.standaloneSetup(parcelController).build();
+        Mockito.when(service.getCompanyWiseParcelCount()).thenReturn(parcelByCompanies);
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
-        mockMvc.perform(get("/api/assignment/get/companies"))
+        mockMvc.perform(get("/api/v1/parcels/companies"))
                 .andExpect(status().isOk());
 
-        assertEquals(parcelByCompanies, parcelController.findParcelsByCompany());
+        assertEquals(parcelByCompanies, controller.getParcelCountByCompany());
     }
 
     @Test
     void testFindParcelsByLocation() throws Exception {
         List<ParcelByLocation> parcelByLocations = Arrays.asList(new ParcelByLocation(1,"Nugegoda"), new ParcelByLocation(2,"Homagama"));
-        Mockito.when(parcelService.getParcelByLocation()).thenReturn(parcelByLocations);
-        mockMvc = MockMvcBuilders.standaloneSetup(parcelController).build();
+        Mockito.when(service.getLocationWiseParcelCount()).thenReturn(parcelByLocations);
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
-        mockMvc.perform(get("/api/assignment/get/locations"))
+        mockMvc.perform(get("/api/v1/parcels/companies"))
                 .andExpect(status().isOk());
 
-        assertEquals(parcelByLocations, parcelController.findParcelsByLocation());
+        assertEquals(parcelByLocations, controller.getParcelCountByLocation());
     }
 
 }

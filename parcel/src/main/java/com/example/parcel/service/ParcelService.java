@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface ParcelService {
 
-    List<ParcelByCompany> getParcelByCompany();
+    List<ParcelByCompany> getCompanyWiseParcelCount();
 
-    List<ParcelByLocation> getParcelByLocation();
+    List<ParcelByLocation> getLocationWiseParcelCount();
 
     List<Parcel> getAllParcels();
 

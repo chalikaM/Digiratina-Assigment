@@ -33,7 +33,7 @@ public class ParcelRepositoryImpl implements ParcelRepository {
     }
 
     @Override
-    public List<Parcel> getAllParcels() {
+    public List<Parcel> findAllParcels() {
 
         String selectQuery = "SELECT * FROM parcels;";
 

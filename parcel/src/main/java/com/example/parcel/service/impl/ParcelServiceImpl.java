@@ -37,9 +37,9 @@ public class ParcelServiceImpl implements ParcelService {
     @Autowired
     ParcelRepository parcelRepository;
 
-    @CircuitBreaker(name = "parcelByCompanyCircuitBreaker", fallbackMethod = "getParcelByCompanyFallback")
+    @CircuitBreaker(name = "parcelByCompanyCircuitBreaker", fallbackMethod = "getCompanyWiseParcelCountFallback")
     @Override
-    public List<ParcelByCompany> getParcelByCompany(){
+    public List<ParcelByCompany> getCompanyWiseParcelCount(){
 
         long startTime = System.currentTimeMillis();
         LOGGER.info("getParcelByCompanyRequest");
@@ -52,9 +52,9 @@ public class ParcelServiceImpl implements ParcelService {
         return Arrays.asList(response.getBody());
     }
 
-    @CircuitBreaker(name = "parcelByLocationCircuitBreaker", fallbackMethod = "getParcelByLocationFallback")
+    @CircuitBreaker(name = "parcelByLocationCircuitBreaker", fallbackMethod = "getLocationWiseParcelCountFallback")
     @Override
-    public List<ParcelByLocation> getParcelByLocation() {
+    public List<ParcelByLocation> getLocationWiseParcelCount() {
 
         long startTime = System.currentTimeMillis();
         LOGGER.info("getParcelByLocationRequest");
@@ -72,19 +72,19 @@ public class ParcelServiceImpl implements ParcelService {
         long startTime = System.currentTimeMillis();
         LOGGER.info("getParcelByLocationRequest");
 
-        List<Parcel> parcels =  parcelRepository.getAllParcels();
+        List<Parcel> parcels =  parcelRepository.findAllParcels();
 
         LOGGER.info("getParcelByLocationResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcels));
 
         return parcels;
     }
 
-    public List<ParcelByCompany> getParcelByCompanyFallback(Exception e) throws Exception{
+    public List<ParcelByCompany> getCompanyWiseParcelCountFallback(Exception e) throws Exception{
         // Fallback implementation
         return Collections.emptyList();
     }
 
-    public List<ParcelByLocation> getParcelByLocationFallback(Exception e) throws Exception{
+    public List<ParcelByLocation> getLocationWiseParcelCountFallback(Exception e) throws Exception{
         // Fallback implementation
         return Collections.emptyList();
     }

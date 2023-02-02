@@ -8,5 +8,5 @@ public interface ParcelRepository {
 
     void saveParcel(Parcel parcel);
 
-    List<Parcel> getAllParcels();
+    List<Parcel> findAllParcels();
 }

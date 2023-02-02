@@ -19,16 +19,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class ParcelServiceTest {
 
     @Autowired
-    private ParcelService parcelService;
+    private ParcelService service;
 
     @MockBean
-    private ParcelRepository parcelRepository;
+    private ParcelRepository repository;
 
     @Test
     public void getParcelsTest(){
 
-        Mockito.when(parcelRepository.getAllParcels()).thenReturn(Stream.of(new Parcel(1,"Chalika","Mihiran",1,1), new Parcel(2,"Asiri","Mevan",2,2)).collect(Collectors.toList()));
-        assertEquals(2, parcelService.getAllParcels().size());
+        Mockito.when(repository.findAllParcels()).thenReturn(Stream.of(new Parcel(1,"Chalika","Mihiran",1,1), new Parcel(2,"Asiri","Mevan",2,2)).collect(Collectors.toList()));
+        assertEquals(2, service.getAllParcels().size());
 
     }
 

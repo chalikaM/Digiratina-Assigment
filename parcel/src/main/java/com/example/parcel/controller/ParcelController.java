@@ -15,7 +15,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/assignment")
+@RequestMapping("/api/v1/parcels")
 public class ParcelController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ParcelController.class);
@@ -24,7 +24,7 @@ public class ParcelController {
     ParcelRepository parcelRepository;
 
     @Autowired
-    ParcelService parcelService;
+    ParcelService service;
 
     @PostMapping("/create")
     public void addParcel(@RequestBody Parcel parcel){
@@ -38,39 +38,39 @@ public class ParcelController {
 
     }
 
-    @GetMapping("/get/companies")
-    public List<ParcelByCompany> findParcelsByCompany() {
+    @GetMapping("/companies")
+    public List<ParcelByCompany> getParcelCountByCompany() {
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("findParcelsByCompanyRequest");
+        LOGGER.info("getParcelCountByCompanyRequest");
 
-        List<ParcelByCompany> parcelsByCompanies = parcelService.getParcelByCompany();
+        List<ParcelByCompany> parcelsByCompanies = service.getCompanyWiseParcelCount();
 
-        LOGGER.info("findParcelsByCompanyResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByCompanies));
+        LOGGER.info("getParcelCountByCompanyResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByCompanies));
 
         return parcelsByCompanies;
     }
 
-    @GetMapping("/get/locations")
-    public List<ParcelByLocation> findParcelsByLocation() {
+    @GetMapping("/locations")
+    public List<ParcelByLocation> getParcelCountByLocation() {
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("findParcelsByLocationRequest");
+        LOGGER.info("getParcelCountByLocationRequest");
 
-        List<ParcelByLocation> parcelsByLocations = parcelService.getParcelByLocation();
+        List<ParcelByLocation> parcelsByLocations = service.getLocationWiseParcelCount();
 
-        LOGGER.info("findParcelsByLocationResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByLocations));
+        LOGGER.info("getParcelCountByLocationResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByLocations));
 
         return parcelsByLocations;
     }
 
-    @GetMapping("/get/parcels")
-    public List<Parcel> findParcels(){
+    @GetMapping()
+    public List<Parcel> listAllParcels(){
 
         long startTime = System.currentTimeMillis();
         LOGGER.info("findParcelsRequest");
 
-        List<Parcel> parcels = parcelService.getAllParcels();
+        List<Parcel> parcels = service.getAllParcels();
 
         LOGGER.info("findParcelsResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcels));
 
