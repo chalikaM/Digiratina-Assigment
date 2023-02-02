@@ -31,5 +31,6 @@ public class CompanyServiceImpl implements CompanyService {
         LOGGER.info("getAllParcelsByCompaniesResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByCompanies));
 
         return parcelsByCompanies;
+
     }
 }
