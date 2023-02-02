@@ -21,16 +21,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class LocationServiceTest {
 
     @Autowired
-    private LocationService locationService;
+    private LocationService service;
 
     @MockBean
-    private LocationRepository locationRepository;
+    private LocationRepository repository;
 
     @Test
     public void testGetLocationWiseParcelCount(){
 
-        Mockito.when(locationRepository.countParcelsByLocation()).thenReturn(Stream.of(new ParcelCountByLocation(1,"Nugegoda"), new ParcelCountByLocation(2,"Homagama")).collect(Collectors.toList()));
-        assertEquals(2, locationService.getLocationWiseParcelCount().size());
+        Mockito.when(repository.countParcelsByLocation()).thenReturn(Stream.of(new ParcelCountByLocation(1,"Nugegoda"), new ParcelCountByLocation(2,"Homagama")).collect(Collectors.toList()));
+        assertEquals(2, service.getLocationWiseParcelCount().size());
 
     }
 

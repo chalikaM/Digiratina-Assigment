@@ -26,23 +26,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class LocationControllerTest {
 
     @Mock
-    private LocationService locationService;
+    private LocationService service;
 
     @InjectMocks
-    private LocationController locationController;
+    private LocationController controller;
 
     private MockMvc mockMvc;
 
     @Test
     void testGetParcelCountByLocation() throws Exception {
         List<ParcelCountByLocation> parcelCountByLocations = Arrays.asList(new ParcelCountByLocation(1,"Nugegoda"), new ParcelCountByLocation(2,"Homagama"));
-        Mockito.when(locationService.getLocationWiseParcelCount()).thenReturn(parcelCountByLocations);
-        mockMvc = MockMvcBuilders.standaloneSetup(locationController).build();
+        Mockito.when(service.getLocationWiseParcelCount()).thenReturn(parcelCountByLocations);
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
         mockMvc.perform(get("/api/v1/locations"))
                 .andExpect(status().isOk());
 
-        assertEquals(parcelCountByLocations, locationController.getParcelCountByLocation());
+        assertEquals(parcelCountByLocations, controller.getParcelCountByLocation());
     }
 
 }
