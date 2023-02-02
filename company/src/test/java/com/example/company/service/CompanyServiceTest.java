@@ -26,7 +26,7 @@ class CompanyServiceTest {
     private CompanyRepository repository;
 
     @Test
-    public void getParcelsTest(){
+    public void testGetCompanyWiseParcelCount(){
 
         Mockito.when(repository.countParcelsByLocation()).thenReturn(Stream.of(new ParcelByCompany(1,"Digiratina"), new ParcelByCompany(2,"Virtusa")).collect(Collectors.toList()));
         assertEquals(2, service.getCompanyWiseParcelCount().size());

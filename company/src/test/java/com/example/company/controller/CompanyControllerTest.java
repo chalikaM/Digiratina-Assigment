@@ -34,7 +34,7 @@ class CompanyControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void testFindParcels() throws Exception {
+    void testGetParcelCountByCompany() throws Exception {
         List<ParcelByCompany> parcelByCompanies = Arrays.asList(new ParcelByCompany(1,"Digiratina"), new ParcelByCompany(2,"Virtusa"));
         Mockito.when(service.getCompanyWiseParcelCount()).thenReturn(parcelByCompanies);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();

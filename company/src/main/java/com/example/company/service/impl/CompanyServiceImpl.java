@@ -24,11 +24,11 @@ public class CompanyServiceImpl implements CompanyService {
     public List<ParcelByCompany> getCompanyWiseParcelCount() {
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("getAllParcelsByCompaniesRequest");
+        LOGGER.info("getCompanyWiseParcelCountRequest");
 
         List<ParcelByCompany> parcelsByCompanies = repository.countParcelsByLocation();
 
-        LOGGER.info("getAllParcelsByCompaniesResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByCompanies));
+        LOGGER.info("getCompanyWiseParcelCountResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByCompanies));
 
         return parcelsByCompanies;
 

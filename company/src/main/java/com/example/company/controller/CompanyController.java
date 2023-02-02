@@ -25,11 +25,11 @@ public class CompanyController {
     public List<ParcelByCompany> getParcelCountByCompany(){
 
         long startTime = System.currentTimeMillis();
-        LOGGER.info("findAllParcelsByCompaniesRequest");
+        LOGGER.info("getParcelCountByCompanyRequest");
 
         List<ParcelByCompany> parcelsByCompanies = service.getCompanyWiseParcelCount();
 
-        LOGGER.info("findAllParcelsByCompaniesResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByCompanies));
+        LOGGER.info("getParcelCountByCompanyResponse : timeTaken={}|response={}", CommonUtil.getTimeTaken(startTime), CommonUtil.convertToString(parcelsByCompanies));
 
         return  parcelsByCompanies;
 
